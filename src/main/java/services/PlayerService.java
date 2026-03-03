@@ -1,0 +1,100 @@
+package services;
+
+import core.ApiResult;
+import core.BaseService;
+import data.TestDataManager;
+import endpoints.PlayerEndpoints;
+import io.restassured.common.mapper.TypeRef;
+import io.restassured.http.Method;
+import models.player.request.CreatePlayerRequest;
+import models.player.request.UpdatePlayerRequest;
+import models.player.response.PlayerResponse;
+import models.player.response.PlayerSummaryResponse;
+
+import java.util.List;
+import java.util.Map;
+
+public class PlayerService extends BaseService {
+
+    public ApiResult<PlayerResponse> createPlayer(String editor, CreatePlayerRequest request) {
+        Map<String, Object> pathParams = Map.of("editor", editor);
+        Map<String, Object> queryParams = Map.of(
+                "age", request.getAge(),
+                "gender", request.getGender(),
+                "login", request.getLogin(),
+                "password", request.getPassword(),
+                "role", request.getRole(),
+                "screenName", request.getScreenName()
+        );
+
+        ApiResult<PlayerResponse> result = execute(
+                Method.GET, // incorrect method, but this is swagger spec
+                PlayerEndpoints.CREATE_PLAYER,
+                null,
+                pathParams,
+                queryParams,
+                new TypeRef<>() {}
+        );
+
+        if (result.getRawResponse().getStatusCode() == 200) {
+            int playerId = result.getBody().getId();
+            TestDataManager.registerCleanup(() -> deletePlayer(editor, playerId));
+        }
+
+        return result;
+    }
+
+    public ApiResult<Void> deletePlayer(String editor, int playerId) {
+        Map<String, Object> pathParams = Map.of("editor", editor);
+        Map<String, Integer> body = Map.of("playerId", playerId);
+
+        return execute(
+                Method.DELETE,
+                PlayerEndpoints.DELETE_PLAYER,
+                body,
+                pathParams,
+                null,
+                null
+        );
+    }
+
+    public ApiResult<PlayerResponse> getPlayer(int playerId) {
+        Map<String, Integer> body = Map.of("playerId", playerId);
+
+        return execute(
+                Method.POST, // incorrect method, but this is swagger spec
+                PlayerEndpoints.GET_PLAYER_BY_ID,
+                body,
+                null,
+                null,
+                new TypeRef<>() {}
+        );
+    }
+
+    public ApiResult<List<PlayerSummaryResponse>> getAllPlayers() {
+        return execute(
+                Method.GET,
+                PlayerEndpoints.GET_ALL_PLAYERS,
+                null,
+                null,
+                null,
+                new TypeRef<>() {}
+        );
+    }
+
+    public ApiResult<PlayerResponse> updatePlayer(String editor, int id, UpdatePlayerRequest request) {
+        Map<String, Object> pathParams = Map.of(
+                "editor", editor,
+                "id", id
+        );
+
+        return execute(
+                Method.GET,
+                PlayerEndpoints.UPDATE_PLAYER,
+                request,
+                pathParams,
+                null,
+                new TypeRef<>() {}
+        );
+    }
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="logPattern">
+            %d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n
+        </Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${logPattern}"/>
+        </Console>
+
+        <!-- File -->
+        <File name="FileLogger" fileName="logs/api-tests.log" append="true">
+            <PatternLayout pattern="${logPattern}"/>
+        </File>
+
+        <!-- Error File -->
+        <File name="ErrorFileLogger" fileName="logs/errors.log" append="true">
+            <PatternLayout pattern="${logPattern}"/>
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </File>
+
+        <!-- Allure Report -->
+        <AllureAppender name="AllureAppender">
+            <PatternLayout pattern="%d{HH:mm:ss} %-5level - %msg%n"/>
+        </AllureAppender>
+
+    </Appenders>
+
+    <Loggers>
+
+        <!-- RestAssured -->
+        <Logger name="io.restassured" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+        </Logger>
+
+        <!-- Root logger -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+            <AppenderRef ref="ErrorFileLogger"/>
+            <AppenderRef ref="AllureAppender"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
