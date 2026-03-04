@@ -2,8 +2,8 @@ package models.player.response;
 
 public class PlayerResponse {
 
-    private int id;
-    private int age;
+    private Integer id;
+    private Integer age;
     private String gender;
     private String login;
     private String password;
@@ -13,7 +13,7 @@ public class PlayerResponse {
     public PlayerResponse() {
     }
 
-    public PlayerResponse(int id, int age, String gender, String login, String password, String role, String screenName) {
+    public PlayerResponse(Integer id, Integer age, String gender, String login, String password, String role, String screenName) {
         this.id = id;
         this.age = age;
         this.gender = gender;
@@ -23,19 +23,19 @@ public class PlayerResponse {
         this.screenName = screenName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

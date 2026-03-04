@@ -16,4 +16,28 @@ public class ResponseSpecFactory {
                 .expectStatusCode(201)
                 .build();
     }
+
+    public static ResponseSpecification response400() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(400)
+                .build();
+    }
+
+    public static ResponseSpecification response401() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(401)
+                .build();
+    }
+
+    public static ResponseSpecification response403() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(403)
+                .build();
+    }
+
+    public static ResponseSpecification response404() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(404)
+                .build();
+    }
 }

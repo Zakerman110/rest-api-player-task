@@ -10,7 +10,11 @@ public class ApiResult<T> {
 
     public ApiResult(Response response, TypeRef<T> typeRef) {
         this.rawResponse = response;
-        this.body = typeRef != null ? response.as(typeRef) : null;
+        if (typeRef != null && response.getStatusCode() < 400 && response.getContentType() != null) {
+            this.body = response.as(typeRef);
+        } else {
+            this.body = null;
+        }
     }
 
     public Response getRawResponse() {

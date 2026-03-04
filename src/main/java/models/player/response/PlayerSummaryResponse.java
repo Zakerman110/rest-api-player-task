@@ -5,17 +5,15 @@ public class PlayerSummaryResponse {
     private int id;
     private int age;
     private String gender;
-    private String role;
     private String screenName;
 
     public PlayerSummaryResponse() {
     }
 
-    public PlayerSummaryResponse(int id, int age, String gender, String role, String screenName) {
+    public PlayerSummaryResponse(int id, int age, String gender, String screenName) {
         this.id = id;
         this.age = age;
         this.gender = gender;
-        this.role = role;
         this.screenName = screenName;
     }
 
@@ -41,14 +39,6 @@ public class PlayerSummaryResponse {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getScreenName() {

@@ -2,7 +2,7 @@ package models.player.request;
 
 public class CreatePlayerRequest {
 
-    private int age;
+    private Integer  age;
     private String gender;
     private String login;
     private String password;
@@ -12,7 +12,7 @@ public class CreatePlayerRequest {
     public CreatePlayerRequest() {
     }
 
-    public CreatePlayerRequest(int age, String gender, String login, String password, String role, String screenName) {
+    public CreatePlayerRequest(Integer age, String gender, String login, String password, String role, String screenName) {
         this.age = age;
         this.gender = gender;
         this.login = login;
@@ -21,11 +21,11 @@ public class CreatePlayerRequest {
         this.screenName = screenName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

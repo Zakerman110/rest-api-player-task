@@ -9,23 +9,23 @@ import io.restassured.http.Method;
 import models.player.request.CreatePlayerRequest;
 import models.player.request.UpdatePlayerRequest;
 import models.player.response.PlayerResponse;
-import models.player.response.PlayerSummaryResponse;
+import models.player.response.PlayersResponse;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerService extends BaseService {
 
     public ApiResult<PlayerResponse> createPlayer(String editor, CreatePlayerRequest request) {
         Map<String, Object> pathParams = Map.of("editor", editor);
-        Map<String, Object> queryParams = Map.of(
-                "age", request.getAge(),
-                "gender", request.getGender(),
-                "login", request.getLogin(),
-                "password", request.getPassword(),
-                "role", request.getRole(),
-                "screenName", request.getScreenName()
-        );
+        Map<String, Object> queryParams = new HashMap<>();
+
+        if (request.getAge() != null) queryParams.put("age", request.getAge());
+        if (request.getGender() != null) queryParams.put("gender", request.getGender());
+        if (request.getLogin() != null) queryParams.put("login", request.getLogin());
+        if (request.getPassword() != null) queryParams.put("password", request.getPassword());
+        if (request.getRole() != null) queryParams.put("role", request.getRole());
+        if (request.getScreenName() != null) queryParams.put("screenName", request.getScreenName());
 
         ApiResult<PlayerResponse> result = execute(
                 Method.GET, // incorrect method, but this is swagger spec
@@ -71,7 +71,7 @@ public class PlayerService extends BaseService {
         );
     }
 
-    public ApiResult<List<PlayerSummaryResponse>> getAllPlayers() {
+    public ApiResult<PlayersResponse> getAllPlayers() {
         return execute(
                 Method.GET,
                 PlayerEndpoints.GET_ALL_PLAYERS,
@@ -89,7 +89,7 @@ public class PlayerService extends BaseService {
         );
 
         return execute(
-                Method.GET,
+                Method.PATCH,
                 PlayerEndpoints.UPDATE_PLAYER,
                 request,
                 pathParams,
