@@ -1,0 +1,12 @@
+18:02:00 INFO  - GET /player/create/{editor} | response time: 305 ms
+
+18:02:00 INFO  - DELETE /player/delete/{editor} | response time: 312 ms
+
+18:02:00 ERROR - Test failed after 1 attempts: testDeleteSelfPermissions
+
+18:02:00 INFO  - Starting cleanup of 1 action(s)
+
+18:02:01 INFO  - DELETE /player/delete/{editor} | response time: 324 ms
+
+18:02:01 INFO  - Cleanup completed
+

@@ -1,0 +1,16 @@
+18:02:08 INFO  - GET /player/create/{editor} | response time: 304 ms
+
+18:02:08 INFO  - GET /player/create/{editor} | response time: 306 ms
+
+18:02:09 INFO  - PATCH /player/update/{editor}/{id} | response time: 304 ms
+
+18:02:09 WARN  - Retrying test: testUpdatePlayerPermissions | Attempt: 1/1
+
+18:02:09 INFO  - Starting cleanup of 2 action(s)
+
+18:02:09 INFO  - DELETE /player/delete/{editor} | response time: 312 ms
+
+18:02:09 INFO  - DELETE /player/delete/{editor} | response time: 306 ms
+
+18:02:09 INFO  - Cleanup completed
+

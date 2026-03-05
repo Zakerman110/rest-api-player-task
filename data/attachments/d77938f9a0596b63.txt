@@ -1,0 +1,6 @@
+18:02:14 INFO  - POST /player/get | response time: 10311 ms
+
+18:02:14 WARN  - Retrying test: testGetPlayerResponseTime | Attempt: 1/1
+
+18:02:14 INFO  - No cleanup needed
+

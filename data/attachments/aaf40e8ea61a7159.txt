@@ -1,0 +1,4 @@
+18:01:57 INFO  - DELETE /player/delete/{editor} | response time: 357 ms
+
+18:01:57 INFO  - No cleanup needed
+
