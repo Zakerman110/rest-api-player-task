@@ -46,4 +46,10 @@ public class ResponseSpecFactory {
                 .expectStatusCode(404)
                 .build();
     }
+
+    public static ResponseSpecification response405() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(405)
+                .build();
+    }
 }

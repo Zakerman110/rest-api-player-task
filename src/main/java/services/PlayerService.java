@@ -18,6 +18,10 @@ import java.util.Map;
 public class PlayerService extends BaseService {
 
     public ApiResult<PlayerResponse> createPlayer(String editor, CreatePlayerRequest request) {
+        return createPlayer(Method.GET, editor, request); // incorrect http method, but this is swagger spec
+    }
+
+    public ApiResult<PlayerResponse> createPlayer(Method method, String editor, CreatePlayerRequest request) {
         Map<String, Object> pathParams = Map.of("editor", editor);
         Map<String, Object> queryParams = new HashMap<>();
 
@@ -29,7 +33,7 @@ public class PlayerService extends BaseService {
         if (request.getScreenName() != null) queryParams.put("screenName", request.getScreenName());
 
         ApiResult<PlayerResponse> result = execute(
-                Method.GET, // incorrect method, but this is swagger spec
+                method,
                 PlayerEndpoints.CREATE_PLAYER,
                 null,
                 pathParams,
@@ -60,10 +64,14 @@ public class PlayerService extends BaseService {
     }
 
     public ApiResult<PlayerResponse> getPlayer(int playerId) {
+        return getPlayer(Method.POST, playerId); // incorrect http method, but this is swagger spec
+    }
+
+    public ApiResult<PlayerResponse> getPlayer(Method method, int playerId) {
         Map<String, Integer> body = Map.of("playerId", playerId);
 
         return execute(
-                Method.POST, // incorrect method, but this is swagger spec
+                method,
                 PlayerEndpoints.GET_PLAYER_BY_ID,
                 body,
                 null,

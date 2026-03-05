@@ -5,6 +5,7 @@ import data.PlayerFactory;
 import enums.Gender;
 import enums.UserRole;
 import io.qameta.allure.Issue;
+import io.restassured.http.Method;
 import io.restassured.specification.ResponseSpecification;
 import models.player.request.CreatePlayerRequest;
 import models.player.request.UpdatePlayerRequest;
@@ -22,7 +23,9 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.lessThan;
 import static specification.ResponseSpecFactory.*;
+import static utils.Constants.SUPERVISOR_ID;
 
 public class PlayerTest extends BaseTest {
 
@@ -326,5 +329,51 @@ public class PlayerTest extends BaseTest {
         ApiResult<Void> result = playerService.deletePlayer(getPermanentSupervisorLogin(), nonExistingPlayerId);
 
         result.validate(response404());
+    }
+
+    @Issue("PERF-GET-SUPERVISOR-PLAYER")
+    @Test(groups = {"bug"}, description = "Get supervisor player response time should be less than 2 seconds")
+    public void testGetPlayerResponseTime() {
+        playerService.getPlayer(SUPERVISOR_ID)
+                .getRawResponse()
+                .then()
+                .time(lessThan(2000L));
+    }
+
+    @Issue("API-CREATE-METHOD")
+    @Test(groups = {"bug"}, description = "Create player endpoint must reject GET")
+    public void testCreatePlayerRejectsGet() {
+        CreatePlayerRequest request = PlayerFactory.validPlayer();
+
+        playerService.createPlayer(Method.GET, getPermanentSupervisorLogin(), request)
+                .validate(response405());
+    }
+
+    @Issue("API-CREATE-METHOD")
+    @Test(groups = {"bug"}, description = "Create player endpoint must allow POST")
+    public void testCreatePlayerAllowsPost() {
+        CreatePlayerRequest request = PlayerFactory.validPlayer();
+
+        playerService.createPlayer(Method.POST, getPermanentSupervisorLogin(), request)
+                .validate(response200());
+    }
+
+    @Issue("API-GET-METHOD")
+    @Test(groups = {"bug"}, description = "Get player endpoint must reject POST")
+    public void testGetPlayerRejectsPost() {
+        int playerId = createPlayerId();
+
+        playerService.getPlayer(Method.POST, playerId)
+                .validate(response405());
+
+    }
+
+    @Issue("API-GET-METHOD")
+    @Test(groups = {"bug"}, description = "Get player endpoint must allow GET")
+    public void testGetPlayerAllowsGet() {
+        int playerId = createPlayerId();
+
+        playerService.getPlayer(Method.GET, playerId)
+                .validate(response200());
     }
 }
