@@ -87,7 +87,7 @@ public class PlayerRoleTest extends BaseTest {
         };
     }
 
-    @Issue("USER-CAN-DELETE_SELF")
+    @Issue("USER-CAN-DELETE-SELF")
     @Test(dataProvider = "testDeleteSelfPermissionsData")
     public void testDeleteSelfPermissions(String TUID, Supplier<PlayerContext> playerSupplier, ResponseSpecification expectedSpec) {
         PlayerContext player = playerSupplier.get();
