@@ -44,7 +44,41 @@ def getConfig = { String key, String defaultValue ->
     return testConfig.getProperty(key, defaultValue)
 }
 
+tasks.register("cleanAllureResults", Delete) {
+    delete layout.buildDirectory.dir("allure-results")
+}
+
+tasks.register("cleanAllureReport", Delete) {
+    delete layout.buildDirectory.dir("reports/allure-report")
+}
+
+tasks.register("allureHistory") {
+
+    doLast {
+
+        def reportHistory = layout.buildDirectory.dir("reports/allure-report/allureReport/history").get().asFile
+        def resultsHistory = layout.buildDirectory.dir("allure-results/history").get().asFile
+
+        if (reportHistory.exists()) {
+
+            resultsHistory.mkdirs()
+
+            copy {
+                from reportHistory
+                into resultsHistory
+            }
+
+            println "Allure history copied: ${reportHistory} -> ${resultsHistory}"
+
+        } else {
+            println "No previous Allure history found"
+        }
+    }
+}
+
 test {
+    dependsOn("cleanAllureResults")
+    ignoreFailures = true
     useTestNG() {
         parallel = getConfig("parallel", "methods")
         threadCount = getConfig("thread.count", "10").toInteger()
@@ -54,4 +88,30 @@ test {
     }
 
     maxParallelForks = 1
+}
+
+allure {
+
+    version = "2.27.0"
+
+    adapter {
+        aspectjWeaver.set(false)
+        frameworks {
+
+            testng {
+                adapterVersion.set("2.33.0")
+            }
+        }
+    }
+}
+
+tasks.named("allureReport") {
+    dependsOn("test")
+    dependsOn("allureHistory")
+    dependsOn("cleanAllureReport")
+    mustRunAfter("test")
+}
+
+tasks.register("report") {
+    dependsOn("test", "allureReport")
 }
