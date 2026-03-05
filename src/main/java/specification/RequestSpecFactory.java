@@ -19,6 +19,8 @@ public class RequestSpecFactory {
                 .setContentType(JSON)
                 .addHeader("Accept", "application/json")
                 .addFilter(new AllureRestAssured())
+                .addFilter(new RequestLoggingFilter())
+                .addFilter(new ResponseLoggingFilter())
                 .build();
     }
 }

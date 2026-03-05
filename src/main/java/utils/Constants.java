@@ -4,5 +4,5 @@ public final class Constants {
 
     private Constants() {}
 
-    public static final String SUPERVISOR_LOGIN = "supervisor";
+    public static final Integer SUPERVISOR_ID = 1;
 }

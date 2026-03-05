@@ -29,6 +29,29 @@ dependencies {
     annotationProcessor 'org.apache.logging.log4j:log4j-core:2.25.3'
 }
 
+def testConfig = new Properties()
+file("src/main/resources/config.properties").withInputStream {
+    testConfig.load(it)
+}
+
+def getConfig = { String key, String defaultValue ->
+    def sys = System.getProperty(key)
+    if (sys != null) return sys
+
+    def env = System.getenv(key.toUpperCase().replace('.', '_'))
+    if (env != null) return env
+
+    return testConfig.getProperty(key, defaultValue)
+}
+
 test {
-    useTestNG()
+    useTestNG() {
+        parallel = getConfig("parallel", "methods")
+        threadCount = getConfig("thread.count", "10").toInteger()
+
+        listeners << "io.qameta.allure.testng.AllureTestNg"
+        listeners << "listeners.RetryListener"
+    }
+
+    maxParallelForks = 1
 }

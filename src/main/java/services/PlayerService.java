@@ -1,5 +1,6 @@
 package services;
 
+import context.TestContext;
 import core.ApiResult;
 import core.BaseService;
 import data.TestDataManager;
@@ -82,7 +83,19 @@ public class PlayerService extends BaseService {
         );
     }
 
+    /**
+     * Updates a player by id.
+     *
+     * <p><b>Test framework constraint:</b></p>
+     * Prevents modification of the permanent supervisor (id = 1) login.
+     * The supervisor login is cached in {@link TestContext} and used across tests,
+     * so changing it would break the test suite.
+     */
     public ApiResult<PlayerResponse> updatePlayer(String editor, int id, UpdatePlayerRequest request) {
+        if (id == 1 && !TestContext.getSupervisorLogin().equals(request.getLogin())) {
+            throw new IllegalStateException("Tests must not modify supervisor login (id = 1)");
+        }
+
         Map<String, Object> pathParams = Map.of(
                 "editor", editor,
                 "id", id

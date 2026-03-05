@@ -1,14 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="API Test Suite" parallel="methods" thread-count="3">
+<suite name="API Test Suite" parallel="methods" thread-count="10">
 
     <listeners>
         <listener class-name="listeners.RetryListener"/>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
 
     <test name="Player Tests">
         <classes>
             <class name="tests.player.PlayerTest"/>
+            <class name="tests.player.PlayerRoleTest"/>
         </classes>
     </test>
 

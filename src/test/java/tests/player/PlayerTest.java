@@ -1,6 +1,5 @@
 package tests.player;
 
-import com.github.javafaker.Faker;
 import core.ApiResult;
 import data.PlayerFactory;
 import enums.Gender;
@@ -16,6 +15,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import tests.BaseTest;
+import utils.JsonSchemas;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -23,7 +23,6 @@ import java.util.function.Supplier;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static specification.ResponseSpecFactory.*;
-import static utils.Constants.SUPERVISOR_LOGIN;
 
 public class PlayerTest extends BaseTest {
 
@@ -32,40 +31,32 @@ public class PlayerTest extends BaseTest {
     public void testCreatePlayerContract() {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
 
-        ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
         result.getRawResponse()
                 .then()
                 .spec(response200())
-                .body(matchesJsonSchemaInClasspath("json-schemas/player-schema.json"));
+                .body(matchesJsonSchemaInClasspath(JsonSchemas.PLAYER));
     }
 
     @Test(description = "Get player by id contract")
     public void testGetPlayerByIdContract() {
-        CreatePlayerRequest request = PlayerFactory.validPlayer();
-        ApiResult<PlayerResponse> resultCreate = playerService.createPlayer(SUPERVISOR_LOGIN, request);
-        resultCreate.getRawResponse()
-                .then()
-                .spec(response200());
-
-        int playerId = resultCreate.getBody().getId();
+        int playerId = createPlayerId();
 
         ApiResult<PlayerResponse> result = playerService.getPlayer(playerId);
 
         result.getRawResponse()
                 .then()
                 .spec(response200())
-                .body(matchesJsonSchemaInClasspath("json-schemas/player-schema.json"));
+                .body(matchesJsonSchemaInClasspath(JsonSchemas.PLAYER));
     }
 
     @Test(description = "Get all players contract")
     public void testGetAllPlayersContract() {
         List<CreatePlayerRequest> requests = List.of(PlayerFactory.validPlayer(), PlayerFactory.validPlayer());
         for (CreatePlayerRequest request : requests) {
-            ApiResult<PlayerResponse> resultCreate = playerService.createPlayer(SUPERVISOR_LOGIN, request);
-            resultCreate.getRawResponse()
-                    .then()
-                    .spec(response200());
+            ApiResult<PlayerResponse> resultCreate = playerService.createPlayer(getPermanentSupervisorLogin(), request);
+            resultCreate.validate(response200());
         }
 
         ApiResult<PlayersResponse> result = playerService.getAllPlayers();
@@ -73,26 +64,20 @@ public class PlayerTest extends BaseTest {
         result.getRawResponse()
                 .then()
                 .spec(response200())
-                .body(matchesJsonSchemaInClasspath("json-schemas/player-summary-schema.json"));
+                .body(matchesJsonSchemaInClasspath(JsonSchemas.PLAYER_SUMMARY));
     }
 
     @Test(description = "Update player contract")
     public void testUpdatePlayerContract() {
-        CreatePlayerRequest request = PlayerFactory.validPlayer();
-        ApiResult<PlayerResponse> resultCreate = playerService.createPlayer(SUPERVISOR_LOGIN, request);
-        resultCreate.getRawResponse()
-                .then()
-                .spec(response200());
-
-        int playerId = resultCreate.getBody().getId();
+        int playerId = createPlayerId();
 
         UpdatePlayerRequest updateRequest = PlayerFactory.validUpdatePlayer();
-        ApiResult<PlayerResponse> result = playerService.updatePlayer(SUPERVISOR_LOGIN, playerId, updateRequest);
+        ApiResult<PlayerResponse> result = playerService.updatePlayer(getPermanentSupervisorLogin(), playerId, updateRequest);
 
         result.getRawResponse()
                 .then()
                 .spec(response200())
-                .body(matchesJsonSchemaInClasspath("json-schemas/player-update-schema.json"));
+                .body(matchesJsonSchemaInClasspath(JsonSchemas.PLAYER_UPDATE));
     }
 
     @DataProvider(name = "testCreatePlayerRequiredFieldsData")
@@ -110,22 +95,18 @@ public class PlayerTest extends BaseTest {
     public void testCreatePlayerRequiredFields(String TUID, Consumer<CreatePlayerRequest> modifier) {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
         modifier.accept(request);
-        ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(response400());
+        result.validate(response400());
     }
 
     @Issue("CREATE-PLAYER-RESPONSE")
     @Test(description = "Create player returns valid response", groups = {"bug"})
     public void testCreatePlayerResponse() {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
-        ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(response200());
+        result.validate(response200());
 
         PlayerResponse player = result.getBody();
         SoftAssert softAssert = new SoftAssert();
@@ -142,11 +123,9 @@ public class PlayerTest extends BaseTest {
     @Test(description = "Created player can be retrieved with correct data")
     public void testCreatePlayerPersistence() {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
-        ApiResult<PlayerResponse> createResult = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> createResult = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        createResult.getRawResponse()
-                .then()
-                .spec(response200());
+        createResult.validate(response200());
 
         int playerId = createResult.getBody().getId();
 
@@ -179,28 +158,17 @@ public class PlayerTest extends BaseTest {
     public void testCreatePlayerAge(String TUID, Integer age, ResponseSpecification spec) {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
         request.setAge(age);
-        ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(spec);
-    }
-
-    private Supplier<String> createPlayerSupplier(UserRole role) {
-        return () -> {
-            CreatePlayerRequest request = PlayerFactory.validPlayer();
-            request.setRole(role.getValue());
-            ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
-            return result.getBody().getLogin();
-        };
+        result.validate(spec);
     }
 
     @DataProvider(name = "testCreatePlayerByEditorRoleData")
     public Object[][] testCreatePlayerByEditorRoleData() {
         return new Object[][]{
-                {"supervisor", (Supplier<String>) () -> SUPERVISOR_LOGIN, response200()},
-                {"admin", createPlayerSupplier(UserRole.ADMIN), response200()},
-                {"user", createPlayerSupplier(UserRole.USER), response403()}
+                {"supervisor", (Supplier<String>) this::getPermanentSupervisorLogin, response200()},
+                {"admin", (Supplier<String>) () -> createPlayerLogin(UserRole.ADMIN), response200()},
+                {"user", (Supplier<String>) () -> createPlayerLogin(UserRole.USER), response403()}
         };
     }
 
@@ -210,9 +178,7 @@ public class PlayerTest extends BaseTest {
 
         ApiResult<PlayerResponse> result = playerService.createPlayer(loginSupplier.get(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(spec);
+        result.validate(spec);
     }
 
     @DataProvider(name = "testCreatePlayerRoleData")
@@ -230,11 +196,9 @@ public class PlayerTest extends BaseTest {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
         request.setRole(role);
 
-        ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(spec);
+        result.validate(spec);
     }
 
     @DataProvider(name = "testCreatePlayerUniqueFieldData")
@@ -250,11 +214,9 @@ public class PlayerTest extends BaseTest {
     public void testCreatePlayerUniqueField(String uniqueField) {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
 
-        ApiResult<PlayerResponse> result =playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result =playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(response200());
+        result.validate(response200());
         Integer firstPlayerId = result.getBody().getId();
 
         CreatePlayerRequest duplicateRequest = PlayerFactory.validPlayer();
@@ -265,11 +227,9 @@ public class PlayerTest extends BaseTest {
             duplicateRequest.setScreenName(request.getScreenName());
         }
 
-        ApiResult<PlayerResponse> duplicateResult = playerService.createPlayer(SUPERVISOR_LOGIN, duplicateRequest);
+        ApiResult<PlayerResponse> duplicateResult = playerService.createPlayer(getPermanentSupervisorLogin(), duplicateRequest);
 
-        duplicateResult.getRawResponse()
-                .then()
-                .spec(response200());
+        duplicateResult.validate(response200());
 
         Assert.assertEquals(duplicateResult.getBody().getId(), firstPlayerId, "Duplicate player should not be created");
     }
@@ -293,11 +253,9 @@ public class PlayerTest extends BaseTest {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
         request.setPassword(password);
 
-        ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(expectedSpec);
+        result.validate(expectedSpec);
     }
 
     @DataProvider(name = "testCreatePlayerGenderData")
@@ -318,10 +276,55 @@ public class PlayerTest extends BaseTest {
         CreatePlayerRequest request = PlayerFactory.validPlayer();
         request.setGender(gender);
 
-        ApiResult<PlayerResponse> result = playerService.createPlayer(SUPERVISOR_LOGIN, request);
+        ApiResult<PlayerResponse> result = playerService.createPlayer(getPermanentSupervisorLogin(), request);
 
-        result.getRawResponse()
-                .then()
-                .spec(expectedSpec);
+        result.validate(expectedSpec);
+    }
+
+    @DataProvider(name = "testSupervisorDeleteRolesData")
+    public Object[][] testSupervisorDeleteRolesData() {
+        return new Object[][]{
+                {"Supervisor deletes ADMIN", UserRole.ADMIN},
+                {"Supervisor deletes USER", UserRole.USER}
+        };
+    }
+
+    @Test(description = "Supervisor can delete players with admin, user roles", dataProvider = "testSupervisorDeleteRolesData")
+    public void testSupervisorCanDeleteRoles(String TUID, UserRole roleToDelete) {
+        int targetId = createPlayerId(roleToDelete);
+
+        ApiResult<Void> result = playerService.deletePlayer(getPermanentSupervisorLogin(), targetId);
+
+        result.validate(response204());
+
+        ApiResult<PlayersResponse> allPlayers =
+                playerService.getAllPlayers();
+
+        boolean exists = allPlayers.getBody()
+                .getPlayers()
+                .stream()
+                .anyMatch(p -> p.getId() == targetId);
+
+        Assert.assertFalse(exists, "Deleted player still present in players list");
+    }
+
+    @Issue("GET-NON-EXISTING-404")
+    @Test(description = "Get non-existing player", groups = {"bug"})
+    public void testGetNonExistingPlayer() {
+        int nonExistingPlayerId = Integer.MAX_VALUE;
+
+        ApiResult<PlayerResponse> result = playerService.getPlayer(nonExistingPlayerId);
+
+        result.validate(response404());
+    }
+
+    @Issue("DELETE-NON-EXISTING-404")
+    @Test(description = "Delete non-existing player", groups = {"bug"})
+    public void testDeleteNonExistingPlayer() {
+        int nonExistingPlayerId = Integer.MAX_VALUE;
+
+        ApiResult<Void> result = playerService.deletePlayer(getPermanentSupervisorLogin(), nonExistingPlayerId);
+
+        result.validate(response404());
     }
 }
