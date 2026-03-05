@@ -1,0 +1,10 @@
+18:07:45 INFO  - GET /player/create/{editor} | response time: 229 ms
+
+18:07:45 ERROR - Test failed after 1 attempts: testCreatePlayerPassword
+
+18:07:45 INFO  - Starting cleanup of 1 action(s)
+
+18:07:45 INFO  - DELETE /player/delete/{editor} | response time: 228 ms
+
+18:07:45 INFO  - Cleanup completed
+

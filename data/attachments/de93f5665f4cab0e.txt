@@ -1,4 +1,0 @@
-18:02:03 INFO  - GET /player/create/{editor} | response time: 316 ms
-
-18:02:03 INFO  - No cleanup needed
-

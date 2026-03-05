@@ -1,0 +1,10 @@
+18:07:41 INFO  - GET /player/create/{editor} | response time: 241 ms
+
+18:07:41 INFO  - PATCH /player/update/{editor}/{id} | response time: 251 ms
+
+18:07:41 INFO  - Starting cleanup of 1 action(s)
+
+18:07:41 INFO  - DELETE /player/delete/{editor} | response time: 224 ms
+
+18:07:41 INFO  - Cleanup completed
+

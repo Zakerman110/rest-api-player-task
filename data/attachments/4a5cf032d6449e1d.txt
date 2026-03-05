@@ -1,6 +1,0 @@
-18:02:02 INFO  - GET /player/create/{editor} | response time: 311 ms
-
-18:02:02 WARN  - Retrying test: testCreatePlayerUniqueField | Attempt: 1/1
-
-18:02:02 INFO  - No cleanup needed
-
