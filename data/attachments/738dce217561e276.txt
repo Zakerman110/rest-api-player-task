@@ -1,0 +1,10 @@
+10:29:46 INFO  - GET /player/create/{editor} | response time: 193 ms
+
+10:29:46 ERROR - Test failed after 1 attempts: testCreatePlayerAge
+
+10:29:46 INFO  - Starting cleanup of 1 action(s)
+
+10:29:46 INFO  - DELETE /player/delete/{editor} | response time: 192 ms
+
+10:29:46 INFO  - Cleanup completed
+

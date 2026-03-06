@@ -1,0 +1,6 @@
+10:29:49 INFO  - GET /player/create/{editor} | response time: 187 ms
+
+10:29:49 WARN  - Retrying test: testUpdatePlayerContract | Attempt: 1/1
+
+10:29:49 INFO  - No cleanup needed
+
