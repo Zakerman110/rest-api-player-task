@@ -1,4 +1,0 @@
-10:29:49 INFO  - POST /player/get | response time: 201 ms
-
-10:29:49 INFO  - No cleanup needed
-

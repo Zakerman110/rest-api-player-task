@@ -1,0 +1,14 @@
+10:38:14 INFO  - GET /player/create/{editor} | response time: 191 ms
+
+10:38:14 INFO  - GET /player/create/{editor} | response time: 191 ms
+
+10:38:14 ERROR - Test failed after 1 attempts: testCreatePlayerUniqueField
+
+10:38:14 INFO  - Starting cleanup of 2 action(s)
+
+10:38:14 INFO  - DELETE /player/delete/{editor} | response time: 189 ms
+
+10:38:15 INFO  - DELETE /player/delete/{editor} | response time: 191 ms
+
+10:38:15 INFO  - Cleanup completed
+

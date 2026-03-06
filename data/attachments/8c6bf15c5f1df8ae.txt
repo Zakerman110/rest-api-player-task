@@ -1,0 +1,6 @@
+10:38:15 INFO  - GET /player/create/{editor} | response time: 183 ms
+
+10:38:15 WARN  - Retrying test: testSupervisorCanDeleteRoles | Attempt: 1/1
+
+10:38:15 INFO  - No cleanup needed
+

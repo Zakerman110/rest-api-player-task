@@ -1,0 +1,6 @@
+10:38:09 INFO  - POST /player/create/{editor} | response time: 222 ms
+
+10:38:10 WARN  - Retrying test: testCreatePlayerAllowsPost | Attempt: 1/1
+
+10:38:10 INFO  - No cleanup needed
+

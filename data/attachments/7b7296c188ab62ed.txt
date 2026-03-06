@@ -1,0 +1,10 @@
+10:38:12 INFO  - GET /player/create/{editor} | response time: 189 ms
+
+10:38:12 ERROR - Test failed after 1 attempts: testCreatePlayerResponse
+
+10:38:12 INFO  - Starting cleanup of 1 action(s)
+
+10:38:13 INFO  - DELETE /player/delete/{editor} | response time: 187 ms
+
+10:38:13 INFO  - Cleanup completed
+
