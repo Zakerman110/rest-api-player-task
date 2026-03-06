@@ -2,6 +2,14 @@
 
 This document lists backend issues detected by the automated API test suite.
 
+## Running Tests
+
+Run the test suite and generate the Allure report:
+
+```bash
+.\gradlew test allureReport
+```
+
 Tests marked with:
 
 - `groups={"bug"}`
