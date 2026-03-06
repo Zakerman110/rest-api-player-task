@@ -1,6 +1,0 @@
-10:23:17 INFO  - POST /player/get | response time: 203 ms
-
-10:23:17 ERROR - Test failed after 1 attempts: testGetNonExistingPlayer
-
-10:23:17 INFO  - No cleanup needed
-

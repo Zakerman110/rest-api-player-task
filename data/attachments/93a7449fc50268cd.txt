@@ -1,0 +1,6 @@
+10:24:59 INFO  - POST /player/create/{editor} | response time: 255 ms
+
+10:24:59 ERROR - Test failed after 1 attempts: testCreatePlayerAllowsPost
+
+10:24:59 INFO  - No cleanup needed
+
