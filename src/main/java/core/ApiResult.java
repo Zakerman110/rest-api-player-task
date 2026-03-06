@@ -4,6 +4,8 @@ import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
 public class ApiResult<T> {
 
     private final Response rawResponse;
@@ -45,6 +47,11 @@ public class ApiResult<T> {
 
     public ApiResult<T> validate(ResponseSpecification spec) {
         rawResponse.then().spec(spec);
+        return this;
+    }
+
+    public ApiResult<T> validateSchema(String schemaPath) {
+        rawResponse.then().body(matchesJsonSchemaInClasspath(schemaPath));
         return this;
     }
 }

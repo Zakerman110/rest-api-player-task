@@ -63,12 +63,37 @@ public class PlayerService extends BaseService {
         );
     }
 
+    /**
+     * Gets player by id.
+     * POST is used because the backend incorrectly implements this endpoint with POST.
+     */
     public ApiResult<PlayerResponse> getPlayer(int playerId) {
-        return getPlayer(Method.POST, playerId); // incorrect http method, but this is swagger spec
+        return getPlayer(Method.POST, playerId);
     }
 
+    /**
+     * Same as getPlayer(int) but accepts String for negative testing.
+     */
+    public ApiResult<PlayerResponse> getPlayer(String playerId) {
+        return getPlayer(Method.POST, playerId);
+    }
+
+    /**
+     * Gets player by id using a specific HTTP method (used for method validation tests).
+     */
     public ApiResult<PlayerResponse> getPlayer(Method method, int playerId) {
-        Map<String, Integer> body = Map.of("playerId", playerId);
+        return getPlayer(method, (Object) playerId);
+    }
+
+    /**
+     * Gets player by id with raw value (used for negative test scenarios).
+     */
+    public ApiResult<PlayerResponse> getPlayer(Method method, String playerId) {
+        return getPlayer(method, (Object) playerId);
+    }
+
+    private ApiResult<PlayerResponse> getPlayer(Method method, Object playerId) {
+        Map<String, Object> body = Map.of("playerId", playerId);
 
         return execute(
                 method,
