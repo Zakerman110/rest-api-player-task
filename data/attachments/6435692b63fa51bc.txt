@@ -1,0 +1,6 @@
+10:23:17 INFO  - GET /player/create/{editor} | response time: 200 ms
+
+10:23:17 WARN  - Retrying test: testDeletePlayerPermissions | Attempt: 1/1
+
+10:23:17 INFO  - No cleanup needed
+

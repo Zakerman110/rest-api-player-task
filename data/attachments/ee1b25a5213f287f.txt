@@ -1,0 +1,10 @@
+10:23:15 INFO  - GET /player/create/{editor} | response time: 194 ms
+
+10:23:15 WARN  - Retrying test: testCreatePlayerPassword | Attempt: 1/1
+
+10:23:15 INFO  - Starting cleanup of 1 action(s)
+
+10:23:16 INFO  - DELETE /player/delete/{editor} | response time: 196 ms
+
+10:23:16 INFO  - Cleanup completed
+
