@@ -1,0 +1,10 @@
+10:42:06 INFO  - GET /player/create/{editor} | response time: 190 ms
+
+10:42:06 WARN  - Retrying test: testCreatePlayerRejectsGet | Attempt: 1/1
+
+10:42:06 INFO  - Starting cleanup of 1 action(s)
+
+10:42:07 INFO  - DELETE /player/delete/{editor} | response time: 192 ms
+
+10:42:07 INFO  - Cleanup completed
+

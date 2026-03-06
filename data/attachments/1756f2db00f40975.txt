@@ -1,4 +1,0 @@
-10:38:10 INFO  - PATCH /player/update/{editor}/{id} | response time: 215 ms
-
-10:38:10 INFO  - No cleanup needed
-

@@ -1,0 +1,10 @@
+10:42:06 INFO  - GET /player/create/{editor} | response time: 189 ms
+
+10:42:06 ERROR - Test failed after 1 attempts: testCreatePlayerGender
+
+10:42:06 INFO  - Starting cleanup of 1 action(s)
+
+10:42:06 INFO  - DELETE /player/delete/{editor} | response time: 199 ms
+
+10:42:06 INFO  - Cleanup completed
+

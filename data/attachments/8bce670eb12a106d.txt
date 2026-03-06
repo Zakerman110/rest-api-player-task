@@ -1,0 +1,6 @@
+10:42:08 INFO  - DELETE /player/delete/{editor} | response time: 192 ms
+
+10:42:08 ERROR - Test failed after 1 attempts: testDeleteNonExistingPlayer
+
+10:42:08 INFO  - No cleanup needed
+

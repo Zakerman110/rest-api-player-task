@@ -1,0 +1,14 @@
+10:42:04 INFO  - GET /player/create/{editor} | response time: 225 ms
+
+10:42:15 INFO  - POST /player/get | response time: 10212 ms
+
+10:42:15 INFO  - PATCH /player/update/{editor}/{id} | response time: 184 ms
+
+10:42:15 WARN  - Retrying test: testSelfRoleEscalation | Attempt: 1/1
+
+10:42:15 INFO  - Starting cleanup of 1 action(s)
+
+10:42:15 INFO  - DELETE /player/delete/{editor} | response time: 184 ms
+
+10:42:15 INFO  - Cleanup completed
+
