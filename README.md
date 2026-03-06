@@ -2,6 +2,14 @@
 
 This document lists backend issues detected by the automated API test suite.
 
+## Running Tests
+
+Run the test suite and generate the Allure report:
+
+```bash
+.\gradlew test allureReport
+```
+
 Tests marked with:
 
 - `groups={"bug"}`
@@ -17,6 +25,7 @@ indicate confirmed defects in the system under test.
 |------------------------------|-------------------------------------------------------------------------------------------|
 | CREATE-PLAYER-CONTRACT       | Create player response does not match the expected API contract                           |
 | CREATE-PLAYER-RESPONSE       | Create player response contains incorrect or inconsistent data                            |
+| GET-PLAYER-STRING-ID         | Player can be retrieved using String id, but should be Integer                            |
 | SPEC-AGE-TOP-BOUNDARY        | Player age boundary validation does not follow specification                              |
 | DUPLICATE-SCREEN-NAME-PLAYER | Duplicate unique fields (login/screenName) are not properly handled                       |
 | CREATE-PLAYER-PASSWORD       | Password validation rules are not enforced correctly                                      |

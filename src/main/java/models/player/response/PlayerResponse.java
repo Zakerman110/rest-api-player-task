@@ -1,5 +1,7 @@
 package models.player.response;
 
+import java.util.Objects;
+
 public class PlayerResponse {
 
     private Integer id;
@@ -77,5 +79,37 @@ public class PlayerResponse {
 
     public void setScreenName(String screenName) {
         this.screenName = screenName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PlayerResponse)) return false;
+        PlayerResponse that = (PlayerResponse) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(age, that.age) &&
+                Objects.equals(gender, that.gender) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(screenName, that.screenName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, age, gender, login, password, role, screenName);
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerResponse{" +
+                "id=" + id +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", screenName='" + screenName + '\'' +
+                '}';
     }
 }

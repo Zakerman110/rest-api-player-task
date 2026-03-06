@@ -1,5 +1,7 @@
 package models.player.request;
 
+import java.util.Objects;
+
 public class CreatePlayerRequest {
 
     private Integer  age;
@@ -67,5 +69,35 @@ public class CreatePlayerRequest {
 
     public void setScreenName(String screenName) {
         this.screenName = screenName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CreatePlayerRequest)) return false;
+        CreatePlayerRequest that = (CreatePlayerRequest) o;
+        return Objects.equals(age, that.age) &&
+                Objects.equals(gender, that.gender) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(screenName, that.screenName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(age, gender, login, password, role, screenName);
+    }
+
+    @Override
+    public String toString() {
+        return "CreatePlayerRequest{" +
+                "age=" + age +
+                ", gender='" + gender + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", screenName='" + screenName + '\'' +
+                '}';
     }
 }
