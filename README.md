@@ -10,6 +10,13 @@ Run the test suite and generate the Allure report:
 .\gradlew test allureReport
 ```
 
+## 📊 Allure Report (GitHub Pages)
+
+The latest automated test report is published via **GitHub Pages** and can be accessed from the **Deployment** section.
+
+🔗 **View the latest report:**  
+https://zakerman110.github.io/rest-api-player-task
+
 Tests marked with:
 
 - `groups={"bug"}`
