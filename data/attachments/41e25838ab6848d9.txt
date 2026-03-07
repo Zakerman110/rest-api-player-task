@@ -1,8 +1,0 @@
-10:46:39 INFO  - START TEST: testCreatePlayerGender | RequestID: bfd6434b
-
-10:46:39 INFO  - GET /player/create/{editor} | response time: 309 ms
-
-10:46:39 WARN  - Retrying test: testCreatePlayerGender | Attempt: 1/1
-
-10:46:39 WARN  - SKIPPED: testCreatePlayerGender
-

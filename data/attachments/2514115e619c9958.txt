@@ -1,0 +1,12 @@
+10:50:44 INFO  - START TEST: testSelfRoleEscalation | RequestID: f7002a0b
+
+10:50:45 INFO  - GET /player/create/{editor} | response time: 338 ms
+
+10:50:55 INFO  - POST /player/get | response time: 10345 ms
+
+10:50:56 INFO  - PATCH /player/update/{editor}/{id} | response time: 310 ms
+
+10:50:56 WARN  - Retrying test: testSelfRoleEscalation | Attempt: 1/1
+
+10:50:56 WARN  - SKIPPED: testSelfRoleEscalation
+

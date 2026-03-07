@@ -1,0 +1,8 @@
+10:50:46 INFO  - START TEST: testCreatePlayerPersistence | RequestID: 9f9e304f
+
+10:50:46 INFO  - GET /player/create/{editor} | response time: 309 ms
+
+10:50:47 INFO  - POST /player/get | response time: 333 ms
+
+10:50:47 INFO  - PASSED: testCreatePlayerPersistence (755 ms)
+

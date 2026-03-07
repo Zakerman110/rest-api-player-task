@@ -1,0 +1,12 @@
+10:50:53 INFO  - START TEST: testDeletePlayerPermissions | RequestID: 2a6a8b75
+
+10:50:53 INFO  - GET /player/create/{editor} | response time: 324 ms
+
+10:50:54 INFO  - GET /player/create/{editor} | response time: 296 ms
+
+10:50:54 INFO  - DELETE /player/delete/{editor} | response time: 305 ms
+
+10:50:54 WARN  - Retrying test: testDeletePlayerPermissions | Attempt: 1/1
+
+10:50:54 WARN  - SKIPPED: testDeletePlayerPermissions
+

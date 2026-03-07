@@ -1,0 +1,10 @@
+10:50:50 INFO  - START TEST: testGetPlayerRejectsPost | RequestID: 3b35c8ed
+
+10:50:50 INFO  - GET /player/create/{editor} | response time: 301 ms
+
+10:51:01 INFO  - POST /player/get | response time: 10296 ms
+
+10:51:01 WARN  - Retrying test: testGetPlayerRejectsPost | Attempt: 1/1
+
+10:51:01 WARN  - SKIPPED: testGetPlayerRejectsPost
+

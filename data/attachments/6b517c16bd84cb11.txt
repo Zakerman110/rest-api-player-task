@@ -1,0 +1,8 @@
+10:50:50 INFO  - START TEST: testGetPlayerResponseTime | RequestID: 05861169
+
+10:51:00 INFO  - POST /player/get | response time: 10299 ms
+
+10:51:00 WARN  - Retrying test: testGetPlayerResponseTime | Attempt: 1/1
+
+10:51:00 WARN  - SKIPPED: testGetPlayerResponseTime
+

@@ -1,0 +1,45 @@
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: The content to match the given JSON schema.
+error: instance type (null) does not match any allowed primitive type (allowed: ["integer"])
+    level: "error"
+    schema: {"loadingURI":"file:/home/runner/work/rest-api-player-task/rest-api-player-task/build/resources/test/json-schemas/player-schema.json#","pointer":"/properties/age"}
+    instance: {"pointer":"/age"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["integer"]
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"file:/home/runner/work/rest-api-player-task/rest-api-player-task/build/resources/test/json-schemas/player-schema.json#","pointer":"/properties/gender"}
+    instance: {"pointer":"/gender"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"file:/home/runner/work/rest-api-player-task/rest-api-player-task/build/resources/test/json-schemas/player-schema.json#","pointer":"/properties/password"}
+    instance: {"pointer":"/password"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"file:/home/runner/work/rest-api-player-task/rest-api-player-task/build/resources/test/json-schemas/player-schema.json#","pointer":"/properties/role"}
+    instance: {"pointer":"/role"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"file:/home/runner/work/rest-api-player-task/rest-api-player-task/build/resources/test/json-schemas/player-schema.json#","pointer":"/properties/screenName"}
+    instance: {"pointer":"/screenName"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+
+  Actual: {"id":28417425,"login":"ken.gleichner","password":null,"screenName":null,"gender":null,"age":null,"role":null}

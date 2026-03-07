@@ -1,0 +1,8 @@
+10:50:51 INFO  - START TEST: testUpdatePlayerContract | RequestID: 80e5299c
+
+10:50:52 INFO  - GET /player/create/{editor} | response time: 296 ms
+
+10:50:52 INFO  - PATCH /player/update/{editor}/{id} | response time: 322 ms
+
+10:50:52 INFO  - PASSED: testUpdatePlayerContract (653 ms)
+

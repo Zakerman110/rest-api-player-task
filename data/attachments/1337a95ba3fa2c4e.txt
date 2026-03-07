@@ -1,0 +1,8 @@
+10:50:45 INFO  - START TEST: testCreatePlayerPersistence | RequestID: 9848a135
+
+10:50:46 INFO  - GET /player/create/{editor} | response time: 324 ms
+
+10:50:46 WARN  - Retrying test: testCreatePlayerPersistence | Attempt: 1/1
+
+10:50:46 WARN  - SKIPPED: testCreatePlayerPersistence
+

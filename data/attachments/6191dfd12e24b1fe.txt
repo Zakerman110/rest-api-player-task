@@ -1,0 +1,10 @@
+10:50:51 INFO  - START TEST: testGetPlayerWithStringId | RequestID: 9de6ac17
+
+10:50:51 INFO  - GET /player/create/{editor} | response time: 297 ms
+
+10:51:01 INFO  - POST /player/get | response time: 10322 ms
+
+10:51:01 WARN  - Retrying test: testGetPlayerWithStringId | Attempt: 1/1
+
+10:51:01 WARN  - SKIPPED: testGetPlayerWithStringId
+

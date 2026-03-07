@@ -1,0 +1,10 @@
+10:50:46 INFO  - START TEST: testDeleteSelfPermissions | RequestID: 47926e4a
+
+10:50:46 INFO  - GET /player/create/{editor} | response time: 299 ms
+
+10:50:47 INFO  - DELETE /player/delete/{editor} | response time: 331 ms
+
+10:50:47 WARN  - Retrying test: testDeleteSelfPermissions | Attempt: 1/1
+
+10:50:47 WARN  - SKIPPED: testDeleteSelfPermissions
+

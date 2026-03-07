@@ -1,0 +1,12 @@
+10:51:29 INFO  - START TEST: testSelfRoleEscalation | RequestID: d6605783
+
+10:51:29 INFO  - GET /player/create/{editor} | response time: 313 ms
+
+10:51:30 INFO  - POST /player/get | response time: 315 ms
+
+10:51:30 INFO  - PATCH /player/update/{editor}/{id} | response time: 296 ms
+
+10:51:40 INFO  - POST /player/get | response time: 10323 ms
+
+10:51:40 INFO  - PASSED: testSelfRoleEscalation (11290 ms)
+

@@ -1,0 +1,6 @@
+10:50:44 INFO  - START TEST: testUpdatePlayerPermissions | RequestID: 64bd0604
+
+10:50:45 INFO  - PATCH /player/update/{editor}/{id} | response time: 335 ms
+
+10:50:45 INFO  - PASSED: testUpdatePlayerPermissions (1034 ms)
+

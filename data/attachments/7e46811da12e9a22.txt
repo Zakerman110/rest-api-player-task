@@ -1,0 +1,6 @@
+10:50:48 INFO  - START TEST: testCreatePlayerRole | RequestID: eba639fd
+
+10:50:48 INFO  - GET /player/create/{editor} | response time: 310 ms
+
+10:50:48 INFO  - PASSED: testCreatePlayerRole (361 ms)
+

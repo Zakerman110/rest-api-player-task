@@ -1,0 +1,12 @@
+10:51:08 INFO  - START TEST: testSelfRoleEscalation | RequestID: 9d3dabc9
+
+10:51:08 INFO  - GET /player/create/{editor} | response time: 297 ms
+
+10:51:18 INFO  - POST /player/get | response time: 10306 ms
+
+10:51:19 INFO  - PATCH /player/update/{editor}/{id} | response time: 313 ms
+
+10:51:29 INFO  - POST /player/get | response time: 10307 ms
+
+10:51:29 INFO  - PASSED: testSelfRoleEscalation (21266 ms)
+

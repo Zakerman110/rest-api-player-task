@@ -1,0 +1,6 @@
+10:50:45 INFO  - START TEST: testCreatePlayerGender | RequestID: a4b52f03
+
+10:50:46 INFO  - GET /player/create/{editor} | response time: 339 ms
+
+10:50:46 INFO  - PASSED: testCreatePlayerGender (393 ms)
+

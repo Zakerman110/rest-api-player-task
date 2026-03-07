@@ -1,8 +1,0 @@
-10:46:52 INFO  - START TEST: testUpdatePlayerPermissions | RequestID: 2d01c660
-
-10:46:52 INFO  - GET /player/create/{editor} | response time: 306 ms
-
-10:46:53 INFO  - PATCH /player/update/{editor}/{id} | response time: 313 ms
-
-10:46:53 INFO  - PASSED: testUpdatePlayerPermissions (643 ms)
-

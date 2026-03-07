@@ -1,0 +1,10 @@
+10:50:49 INFO  - START TEST: testGetAllPlayersContract | RequestID: fe342a4c
+
+10:50:49 INFO  - GET /player/create/{editor} | response time: 325 ms
+
+10:50:50 INFO  - GET /player/create/{editor} | response time: 316 ms
+
+10:50:50 INFO  - GET /player/get/all | response time: 326 ms
+
+10:50:50 INFO  - PASSED: testGetAllPlayersContract (1049 ms)
+

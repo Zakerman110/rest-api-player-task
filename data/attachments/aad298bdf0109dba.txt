@@ -1,0 +1,10 @@
+10:50:47 INFO  - START TEST: testCreatePlayerByEditorRole | RequestID: f904df11
+
+10:50:47 INFO  - GET /player/create/{editor} | response time: 310 ms
+
+10:50:48 INFO  - GET /player/create/{editor} | response time: 310 ms
+
+10:50:48 WARN  - Retrying test: testCreatePlayerByEditorRole | Attempt: 1/1
+
+10:50:48 WARN  - SKIPPED: testCreatePlayerByEditorRole
+

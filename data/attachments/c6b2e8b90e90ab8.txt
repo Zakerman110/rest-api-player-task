@@ -1,0 +1,8 @@
+10:50:44 INFO  - START TEST: testCreatePlayerAllowsPost | RequestID: 404dc21a
+
+10:50:45 INFO  - POST /player/create/{editor} | response time: 332 ms
+
+10:50:45 WARN  - Retrying test: testCreatePlayerAllowsPost | Attempt: 1/1
+
+10:50:45 WARN  - SKIPPED: testCreatePlayerAllowsPost
+

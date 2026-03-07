@@ -1,0 +1,33 @@
+10:50:49 INFO  - START TEST: testCreatePlayerResponse | RequestID: deaf4b31
+
+10:50:49 INFO  - GET /player/create/{editor} | response time: 313 ms
+
+10:50:49 ERROR - Test failed after 1 attempts: testCreatePlayerResponse
+
+10:50:49 ERROR - FAILED: testCreatePlayerResponse
+
+10:50:49 ERROR - Exception:
+java.lang.AssertionError: The following asserts failed:
+	Created player response is incorrect expected [PlayerResponse{id=1138907092, age=46, gender='male', login='brenna.gleichner', password='89cmz9vx3r', role='user', screenName='Kirk Labadie III'}] but found [PlayerResponse{id=1138907092, age=null, gender='null', login='brenna.gleichner', password='null', role='null', screenName='null'}]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at tests.player.PlayerTest.testCreatePlayerResponse(PlayerTest.java:108)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+	at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:280)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:76)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+

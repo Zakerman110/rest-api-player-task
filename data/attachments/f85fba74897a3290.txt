@@ -1,0 +1,8 @@
+10:50:45 INFO  - START TEST: testUpdatePlayerPermissions | RequestID: 7838f01e
+
+10:50:45 INFO  - GET /player/create/{editor} | response time: 317 ms
+
+10:50:46 INFO  - PATCH /player/update/{editor}/{id} | response time: 329 ms
+
+10:50:46 INFO  - PASSED: testUpdatePlayerPermissions (847 ms)
+

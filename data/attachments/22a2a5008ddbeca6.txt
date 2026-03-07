@@ -1,0 +1,8 @@
+10:50:48 INFO  - START TEST: testCreatePlayerUniqueField | RequestID: 4cb66544
+
+10:50:49 INFO  - GET /player/create/{editor} | response time: 310 ms
+
+10:50:49 INFO  - GET /player/create/{editor} | response time: 311 ms
+
+10:50:49 INFO  - PASSED: testCreatePlayerUniqueField (682 ms)
+

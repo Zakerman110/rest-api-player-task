@@ -1,0 +1,12 @@
+10:50:47 INFO  - START TEST: testUpdatePlayerPermissions | RequestID: 9c559485
+
+10:50:47 INFO  - GET /player/create/{editor} | response time: 310 ms
+
+10:50:48 INFO  - GET /player/create/{editor} | response time: 321 ms
+
+10:50:48 INFO  - PATCH /player/update/{editor}/{id} | response time: 319 ms
+
+10:50:48 WARN  - Retrying test: testUpdatePlayerPermissions | Attempt: 1/1
+
+10:50:48 WARN  - SKIPPED: testUpdatePlayerPermissions
+

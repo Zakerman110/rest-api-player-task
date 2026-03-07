@@ -1,0 +1,10 @@
+10:50:50 INFO  - START TEST: testCreatePlayerUniqueField | RequestID: e2dcfe67
+
+10:50:50 INFO  - GET /player/create/{editor} | response time: 307 ms
+
+10:50:50 INFO  - GET /player/create/{editor} | response time: 306 ms
+
+10:50:50 WARN  - Retrying test: testCreatePlayerUniqueField | Attempt: 1/1
+
+10:50:50 WARN  - SKIPPED: testCreatePlayerUniqueField
+

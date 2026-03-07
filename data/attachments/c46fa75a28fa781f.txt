@@ -1,0 +1,6 @@
+10:50:48 INFO  - START TEST: testCreatePlayerRequiredFields | RequestID: 13c86d45
+
+10:50:49 INFO  - GET /player/create/{editor} | response time: 303 ms
+
+10:50:49 INFO  - PASSED: testCreatePlayerRequiredFields (327 ms)
+

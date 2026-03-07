@@ -1,0 +1,10 @@
+10:50:52 INFO  - START TEST: testSupervisorCanDeleteRoles | RequestID: 28e0aa9f
+
+10:50:52 INFO  - GET /player/create/{editor} | response time: 297 ms
+
+10:50:53 INFO  - DELETE /player/delete/{editor} | response time: 307 ms
+
+10:50:53 INFO  - GET /player/get/all | response time: 306 ms
+
+10:50:53 INFO  - PASSED: testSupervisorCanDeleteRoles (947 ms)
+

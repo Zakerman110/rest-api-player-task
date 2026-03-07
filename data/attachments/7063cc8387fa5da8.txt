@@ -1,0 +1,8 @@
+10:50:44 INFO  - START TEST: testCreatePlayerContract | RequestID: d68407ff
+
+10:50:45 INFO  - GET /player/create/{editor} | response time: 349 ms
+
+10:50:46 WARN  - Retrying test: testCreatePlayerContract | Attempt: 1/1
+
+10:50:46 WARN  - SKIPPED: testCreatePlayerContract
+

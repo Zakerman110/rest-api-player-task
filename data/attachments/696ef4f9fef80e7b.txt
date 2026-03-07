@@ -1,0 +1,8 @@
+10:50:46 INFO  - START TEST: testCreatePlayerGender | RequestID: 9d6d6243
+
+10:50:46 INFO  - GET /player/create/{editor} | response time: 300 ms
+
+10:50:46 WARN  - Retrying test: testCreatePlayerGender | Attempt: 1/1
+
+10:50:46 WARN  - SKIPPED: testCreatePlayerGender
+

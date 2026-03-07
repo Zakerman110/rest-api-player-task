@@ -1,0 +1,8 @@
+10:50:46 INFO  - START TEST: testCreatePlayerAge | RequestID: 4c22f8e3
+
+10:50:47 INFO  - GET /player/create/{editor} | response time: 319 ms
+
+10:50:47 WARN  - Retrying test: testCreatePlayerAge | Attempt: 1/1
+
+10:50:47 WARN  - SKIPPED: testCreatePlayerAge
+

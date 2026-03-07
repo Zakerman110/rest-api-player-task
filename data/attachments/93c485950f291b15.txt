@@ -1,0 +1,8 @@
+10:50:49 INFO  - START TEST: testGetNonExistingPlayer | RequestID: 406988e0
+
+10:50:50 INFO  - POST /player/get | response time: 317 ms
+
+10:50:50 WARN  - Retrying test: testGetNonExistingPlayer | Attempt: 1/1
+
+10:50:50 WARN  - SKIPPED: testGetNonExistingPlayer
+
