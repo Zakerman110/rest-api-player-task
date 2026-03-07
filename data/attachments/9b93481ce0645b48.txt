@@ -1,0 +1,8 @@
+10:46:38 INFO  - START TEST: testCreatePlayerPassword | RequestID: f061d359
+
+10:46:39 INFO  - GET /player/create/{editor} | response time: 332 ms
+
+10:46:39 WARN  - Retrying test: testCreatePlayerPassword | Attempt: 1/1
+
+10:46:39 WARN  - SKIPPED: testCreatePlayerPassword
+

@@ -1,0 +1,10 @@
+10:46:43 INFO  - START TEST: testGetPlayerAllowsGet | RequestID: 04cf537a
+
+10:46:43 INFO  - GET /player/create/{editor} | response time: 330 ms
+
+10:46:43 INFO  - GET /player/get | response time: 320 ms
+
+10:46:43 WARN  - Retrying test: testGetPlayerAllowsGet | Attempt: 1/1
+
+10:46:43 WARN  - SKIPPED: testGetPlayerAllowsGet
+

@@ -1,0 +1,12 @@
+10:46:37 INFO  - START TEST: testSelfRoleEscalation | RequestID: adba9034
+
+10:46:38 INFO  - GET /player/create/{editor} | response time: 342 ms
+
+10:46:48 INFO  - POST /player/get | response time: 10337 ms
+
+10:46:48 INFO  - PATCH /player/update/{editor}/{id} | response time: 312 ms
+
+10:46:48 WARN  - Retrying test: testSelfRoleEscalation | Attempt: 1/1
+
+10:46:48 WARN  - SKIPPED: testSelfRoleEscalation
+

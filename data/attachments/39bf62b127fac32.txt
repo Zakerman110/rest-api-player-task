@@ -1,0 +1,8 @@
+10:46:41 INFO  - START TEST: testCreatePlayerResponse | RequestID: 8c48f572
+
+10:46:41 INFO  - GET /player/create/{editor} | response time: 297 ms
+
+10:46:41 WARN  - Retrying test: testCreatePlayerResponse | Attempt: 1/1
+
+10:46:41 WARN  - SKIPPED: testCreatePlayerResponse
+

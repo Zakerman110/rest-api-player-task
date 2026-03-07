@@ -1,0 +1,8 @@
+10:46:45 INFO  - START TEST: testDeletePlayerPermissions | RequestID: bdafe8d3
+
+10:46:45 INFO  - GET /player/create/{editor} | response time: 298 ms
+
+10:46:45 INFO  - DELETE /player/delete/{editor} | response time: 297 ms
+
+10:46:45 INFO  - PASSED: testDeletePlayerPermissions (623 ms)
+

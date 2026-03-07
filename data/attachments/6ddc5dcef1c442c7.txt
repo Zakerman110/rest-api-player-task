@@ -1,0 +1,6 @@
+10:46:39 INFO  - START TEST: testCreatePlayerAge | RequestID: ac36cd12
+
+10:46:39 INFO  - GET /player/create/{editor} | response time: 309 ms
+
+10:46:39 INFO  - PASSED: testCreatePlayerAge (424 ms)
+

@@ -1,0 +1,8 @@
+10:46:43 INFO  - START TEST: testGetPlayerByIdContract | RequestID: 1c586664
+
+10:46:43 INFO  - GET /player/create/{editor} | response time: 319 ms
+
+10:46:44 INFO  - POST /player/get | response time: 313 ms
+
+10:46:44 INFO  - PASSED: testGetPlayerByIdContract (672 ms)
+

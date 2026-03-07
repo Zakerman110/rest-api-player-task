@@ -1,0 +1,6 @@
+10:46:37 INFO  - START TEST: testCreatePlayerPassword | RequestID: b25fc831
+
+10:46:38 INFO  - GET /player/create/{editor} | response time: 363 ms
+
+10:46:38 INFO  - PASSED: testCreatePlayerPassword (972 ms)
+

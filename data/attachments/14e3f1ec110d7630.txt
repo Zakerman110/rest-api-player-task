@@ -1,0 +1,2 @@
+The following asserts failed:
+	Created player response is incorrect expected [PlayerResponse{id=1534960924, age=19, gender='male', login='mauricio.paucek', password='ntizdn0dm0kud9', role='user', screenName='Floretta Muller'}] but found [PlayerResponse{id=1534960924, age=null, gender='null', login='mauricio.paucek', password='null', role='null', screenName='null'}]
