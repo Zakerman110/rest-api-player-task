@@ -3,7 +3,7 @@
 
     <Properties>
         <Property name="logPattern">
-            %d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n
+            %d{HH:mm:ss.SSS} [%t] [%X{testName:-suite}] [%X{requestId:-init}] %-5level %logger{36} - %msg%n
         </Property>
     </Properties>
 

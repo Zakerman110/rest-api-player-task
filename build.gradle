@@ -85,9 +85,17 @@ test {
 
         listeners << "io.qameta.allure.testng.AllureTestNg"
         listeners << "listeners.RetryListener"
+        listeners << "listeners.TestListener"
     }
 
     maxParallelForks = 1
+
+    testLogging {
+        events "started", "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+
+    outputs.upToDateWhen { false }
 }
 
 allure {

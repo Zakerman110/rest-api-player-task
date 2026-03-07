@@ -2,11 +2,12 @@ package tests;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import config.ConfigKeys;
+import config.ConfigManager;
 import context.TestContext;
 import data.PlayerFactory;
 import data.TestDataManager;
 import enums.UserRole;
-import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.config.ObjectMapperConfig;
@@ -15,7 +16,11 @@ import models.player.response.PlayerResponse;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import services.PlayerService;
-import utils.LogCollector;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
 
 import static specification.ResponseSpecFactory.response200;
 import static utils.Constants.SUPERVISOR_ID;
@@ -27,7 +32,7 @@ public abstract class BaseTest {
     @BeforeSuite(alwaysRun = true)
     public void setup() {
         setupRestAssured();
-
+        writeAllureEnvironment();
         initPermanentSupervisor();
     }
 
@@ -40,6 +45,26 @@ public abstract class BaseTest {
                         ObjectMapperConfig.objectMapperConfig()
                                 .jackson2ObjectMapperFactory((cls, charset) -> mapper)
                 );
+    }
+
+    private void writeAllureEnvironment() {
+        Properties props = new Properties();
+        props.setProperty("Base URL", ConfigManager.get(ConfigKeys.BASE_URL));
+        props.setProperty("Retry Count", String.valueOf(ConfigManager.getInt(ConfigKeys.RETRY_COUNT)));
+        props.setProperty("Parallel", ConfigManager.get(ConfigKeys.PARALLEL));
+        props.setProperty("Thread Count", String.valueOf(ConfigManager.getInt(ConfigKeys.THREAD_COUNT)));
+
+        Path resultsDir = Path.of("build", "allure-results");
+        Path envFile = resultsDir.resolve("environment.properties");
+
+        try {
+            Files.createDirectories(resultsDir);
+            try (var out = Files.newOutputStream(envFile)) {
+                props.store(out, "Allure Environment");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to write Allure environment.properties", e);
+        }
     }
 
     public void initPermanentSupervisor() {
@@ -55,17 +80,6 @@ public abstract class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         TestDataManager.cleanup();
-        attachLogs();
-    }
-
-    public void attachLogs() {
-        String logs = LogCollector.getLogs();
-
-        if (!logs.isEmpty()) {
-            Allure.addAttachment("Execution Log", "text/plain", logs);
-        }
-
-        LogCollector.clear();
     }
 
     @Step("Get permanent supervisor login")
